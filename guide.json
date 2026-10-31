@@ -1,0 +1,109 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "pngdeer",
+    "nameCn": "pngdeer",
+    "repoName": "pngdeer-deploy-guide",
+    "oneLiner": "不给质量滑杆：工具自己从 2 到 256 色里搜一遍，按感知指标挑出最小的那个文件",
+    "officialRepo": "https://github.com/heydeer/pngdeer",
+    "officialDocs": "https://github.com/heydeer/pngdeer#readme",
+    "stars": "401",
+    "license": "MIT",
+    "highlights": [
+      "不用调参：质量由工具自己判断",
+      "比 TinyPNG 更小：中位图再小 8–12%",
+      "同一套代码：命令行与网页输出完全一致",
+      "动图不丢帧：APNG 逐帧统一调色板并保留时间轴",
+      "JPEG 也能压：用 mozjpeg 重编码",
+      "MIT 协议，可自由使用"
+    ],
+    "mcpSupport": "项目本身不含 MCP；本仓库的 MCP 只提供安装方式、用法与常见问题。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-31",
+    "verification": [
+      [
+        "README 确认 Homebrew 与源码编译两种方式、平台限制与网页版",
+        "已核对 2026-10-31"
+      ],
+      [
+        "README 确认与 TinyPNG 等工具的对比数据与 MIT 协议",
+        "已核对 2026-10-31"
+      ],
+      [
+        "未实测安装与压缩效果",
+        "说明 2026-10-31"
+      ],
+      [
+        "MCP 冒烟：initialize / tools/list 返回 get_guide、search_guide、get_project_info",
+        "已验证 2026-10-31"
+      ],
+      [
+        "非目标宿主调用 get_guide 被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-31"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "brew install heydeer/tap/pngdeer",
+        "pngdeer --version",
+        "echo \"安装完成：pngdeer input.png -o output.png\""
+      ],
+      "stepsPs": [
+        "Write-Host \"pngdeer 命令行目前只提供 macOS 与 Linux 包；Windows 可用网页版，或按下面的步骤从源码编译\"",
+        "if (-not (Get-Command cargo -ErrorAction SilentlyContinue)) { throw '需要先安装 Rust 工具链（rustup），或改用网页版' }",
+        "git clone https://github.com/heydeer/pngdeer.git",
+        "Set-Location pngdeer",
+        "cargo build --release",
+        "Write-Host \"编译完成：target\\release\\pngdeer.exe input.png -o output.png\""
+      ],
+      "source": "https://github.com/heydeer/pngdeer#readme"
+    },
+    "pitfalls": [
+      "Windows 装不了命令行：用网页版，或先装 rustup 再编译",
+      "brew 找不到包：先 `brew tap heydeer/tap` 再装",
+      "编译报错：确认 Rust 版本较新，缺依赖按提示装",
+      "压完颜色发灰：该图颜色太丰富，改用无损工具",
+      "动图掉帧：确认源文件是标准 APNG，转码后再试",
+      "网页版打不开大图：换命令行处理"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/pngdeer-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/pngdeer-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "pngdeer",
+    "pngdeer 安装",
+    "PNG 压缩",
+    "TinyPNG 替代",
+    "图片 无损感 压缩",
+    "pngdeer 教程",
+    "APNG 压缩",
+    "JPEG 重编码",
+    "pngdeer deploy guide",
+    "命令行 图片压缩"
+  ],
+  "topics": [
+    "image-compression",
+    "png",
+    "rust",
+    "cli",
+    "webassembly",
+    "pngdeer"
+  ]
+}

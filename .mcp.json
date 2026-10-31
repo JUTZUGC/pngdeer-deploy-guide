@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "pngdeer-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
